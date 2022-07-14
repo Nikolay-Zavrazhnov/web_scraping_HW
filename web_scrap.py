@@ -2,7 +2,7 @@ import bs4
 
 import requests
 
-KEYWORDS = ['Pi', 'HoughCircles', 'MLAG', 'body']
+KEYWORDS = ['Pi', 'HoughCircles', 'MLAG']
 base_url = 'https://habr.com'
 url = '/ru/all'
 
@@ -21,7 +21,7 @@ for article in articles:
     link = article.find(class_="tm-article-snippet__title-link").attrs['href']
     date = article.find('time').attrs['title']
     texts_preview_article = article.find_all(
-        class_='article-formatted-body article-formatted-body article-formatted-body_version-2')
+        class_='tm-article-body tm-article-snippet__lead')
     texts_preview_article_div = article.find_all('div')
 
     compl_list = []

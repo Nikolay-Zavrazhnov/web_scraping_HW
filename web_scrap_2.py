@@ -1,7 +1,7 @@
 import bs4
 import requests
 
-KEYWORDS_2 = ['Pi', 'HoughCircles', 'MLAG', 'body']
+KEYWORDS_2 = ['Pi', 'HoughCircles', 'MLAG', 'body', 'HTML']
 base_url = 'https://habr.com'
 url = '/ru/all'
 
@@ -32,6 +32,8 @@ for article in articles:
     soup_2 = bs4.BeautifulSoup(text_2, features='html.parser')
     article_2 = soup_2.find('article')
     all_text = article_2.find_all('div')
+    sub_title = article_2.find('h3')
+    # print(type(sub_title))
 
     compl_list_2 = []
 
@@ -40,4 +42,3 @@ for article in articles:
     crossing_word_2 = set(KEYWORDS_2) & set(compl_list_2)
     if len(crossing_word_2) != 0:
         print(f"<{date}>-<{titles}>-<{full_url}>")
-        
